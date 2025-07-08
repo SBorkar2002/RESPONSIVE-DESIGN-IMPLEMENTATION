@@ -16,7 +16,7 @@ body {
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 101; /* Must be higher than the mobile nav overlay */
+    z-index: 1001;
 }
 
 .hamburger-menu .bar {
@@ -31,8 +31,12 @@ body {
 /* --- MOBILE NAVIGATION STYLES --- */
 /* This media query activates the styles on screens 768px or smaller */
 @media (max-width: 768px) {
+    /* Show the hamburger menu icon on mobile */
+    .hamburger-menu {
+        display: block;
+    }
     
-    /* Hide the standard desktop navigation */
+    /* Hide the standard desktop navigation links */
     .header .nav-links {
         display: none;
         position: fixed;
@@ -40,30 +44,25 @@ body {
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: rgba(13, 13, 13, 0.98); /* Semi-transparent background */
+        background-color: rgba(13, 13, 13, 0.98);
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 2rem;
-        z-index: 100;
+        z-index: 1000;
     }
 
-    /* Show the navigation when the 'mobile-open' class is added by React */
+    /* This class is added by React to show the mobile menu */
     .header .nav-links.mobile-open {
         display: flex;
     }
 
-    /* Make the links larger and easier to tap on mobile */
+    /* Make links bigger for mobile tapping */
     .nav-links a {
         font-size: 1.5rem;
     }
     
-    /* Show the hamburger menu icon on mobile */
-    .hamburger-menu {
-        display: block;
-    }
-
-    /* Animate the hamburger bars into an 'X' shape when open */
+    /* Animate the hamburger bars into an 'X' shape */
     .hamburger-menu .bar.open:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
@@ -73,6 +72,11 @@ body {
     .hamburger-menu .bar.open:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
+
+    /* General responsive adjustments */
+    .hero h1 { font-size: 3.5rem; }
+    .hero p { font-size: 1rem; }
+    .portfolio-header h2, .contact h2 { font-size: 2.5rem; }
 }
 a {
     color: #ffffff;
